@@ -1,0 +1,95 @@
+{% extends "base/base.html" %}
+{% block mainbody %}
+
+{% include "base/toper.html" %}
+<p> 这个是页面的信息展示 </p>
+{{ hello }}
+
+<!-- 页面的模板使用的方式 -->
+<!-- 单个判断 -->
+{% if condition1 %}
+     ... display single
+{% endif %}
+<br/>
+
+<!-- 多个判断 -->
+{% if condition1 %}
+   ... display 1
+{% elif condition2 %}
+   ... display 2
+{% elif condition3 %}
+   ... display 3
+{% elif condition4 %}
+   ... display 4
+{% elif condition5 %}
+   ... display 5
+{% else %}
+   ... display other
+{% endif %}
+<br/>
+
+<!-- if 标签接受 and ， or 或者 not 关键字来对多个变量做判断 ，或者对变量取反（ not ) -->
+{% if not condition1 %}
+     ... display not
+{% endif %}
+<br/>
+{% if not condition1 and not condition2 %}
+     ... display and
+{% endif %}
+<br/>
+{% if condition1 or not condition2 %}
+     ... display or
+{% endif %}
+<br/>
+
+<!-- for 标签  reversed 表示反向遍历 -->
+<ul>
+{% for i in array %}
+    <li>{{ i }}</li>
+{% endfor %}
+</ul>
+<br/>
+<ul>
+{% for i in array reversed %}
+    <li>{{ i }}</li>
+{% endfor %}
+</ul>
+<br/>
+
+<!-- ifequal/ifnotequal 比较两个值，当他们相等时，显示 标签 -->
+{% ifequal a tempa %}
+    ifequal!
+{% endifequal %}
+<br/>
+{% ifnotequal b c %}
+    ifnotequal!
+{% endifnotequal %}
+<br/>
+{% ifequal b c %}
+    b is same to c!
+{% else %}
+    b is diff to c!
+{% endifequal %}
+<br/>
+
+{# 这是一个模板注释 #}
+
+<!-- 过滤器 -->
+{{ 'DjAnGo'|lower }} <!-- 小写 -->
+<br/>
+{{ 'DjAnGo'|upper  }} <!-- 大写 -->
+<br/>
+{{ 'DjAnGo'|first  }} <!-- 第一个元素 -->
+<br/>
+{{ 'DjAnGo'|last  }} <!-- 最后一个元素 -->
+<br/>
+{{ array|truncatewords:"3" }} <!-- 前三个元素 -->
+<br/>
+{{ "DjA\n'Go"|addslashes }} <!-- 添加反斜杠到任何反斜杠、单引号或者双引号前面 -->
+<br/>
+{{ '1516361991'|length }} <!-- 返回变量的长度 -->
+<br/>
+{{ datetime|date:"Y年 m月 d日 H:i:s" }} <!-- 按指定的格式字符串参数格式化 date 或者 datetime 对象 -->
+<br/>
+
+{% endblock %}
